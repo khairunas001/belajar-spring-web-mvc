@@ -28,7 +28,7 @@ public class HelloControllerIntegrationTest {
         String response = responseEntity.getBody();
 
         Assertions.assertNotNull(response);
-        Assertions.assertEquals("Hello World-Guest", response.trim());
+        Assertions.assertEquals("Hello Guest", response.trim());
 
         log.info("Response  void helloGuest() = {}", response);
         log.info("Response Entity  void helloGuest() = {}", responseEntity);
@@ -41,7 +41,7 @@ public class HelloControllerIntegrationTest {
         String response = responseEntity.getBody();
 
         Assertions.assertNotNull(response);
-        Assertions.assertEquals("Hello World-Joko", response.trim());
+        Assertions.assertEquals("Hello Joko", response.trim());
 
         log.info("Response void helloName() = {}", response);
         log.info("Response Entity void helloName() = {}", responseEntity);
