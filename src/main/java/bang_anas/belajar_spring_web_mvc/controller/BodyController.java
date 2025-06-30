@@ -18,11 +18,13 @@ public class BodyController {
     private ObjectMapper objectMapper;
 
     @PostMapping(
-            path = "/nody/hello",
+            path = "/body/hello",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public String body(@RequestBody String requestBody) throws JsonProcessingException {
+        // membuat object di class HelloRequest
+        // Mengubah JSON menjadi instance dari class Java
         HelloRequest request = objectMapper.readValue(
                 requestBody,
                 HelloRequest.class
@@ -31,6 +33,7 @@ public class BodyController {
         HelloResponse response = new HelloResponse();
         response.setHello("Hello " + request.getName());
 
+        // Mengubah object Java menjadi JSON string
         return objectMapper.writeValueAsString(response);
     }
 }
