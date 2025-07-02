@@ -1,0 +1,22 @@
+POST http://localhost:9000/api/person
+Content-Type: application/json
+Accept: application/json
+
+{
+  "firstName": "Anas",
+  "middleName": "Wiwok",
+  "lastName": "Nyueni",
+  "email": "Alamak@yahoo.com",
+  "phone": "901209310293",
+  "address": {
+    "street": "Himawari",
+    "city": "Shizuoka",
+    "country": "Japan",
+    "postalCode": "992072"
+  },
+  "hobbies": ["Coding", "Gym", "Gaming"],
+  "socialMedias": [
+    {"name": "We chat", "location": "wechat.com"},
+    {"name": "samsung cloud", "location": "samsung.com"}
+  ]
+}

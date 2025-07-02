@@ -54,5 +54,73 @@ class PersonControllerTest {
         );
     }
 
+    @Test
+    void createPersonValidationError() throws Exception {
+
+        mockMvc.perform(post("/person")
+                                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                                //                                .param("firstName", "Anas") hilangkan parameter firstName agar error
+                                .param(
+                                        "middleName",
+                                        "Arek"
+                                )
+                                .param(
+                                        "lastName",
+                                        "Nyueni"
+                                )
+                                .param(
+                                        "email",
+                                        "Masuk-Diakal@yahoo.com"
+                                )
+                                .param(
+                                        "phone",
+                                        "0696969696"
+                                )
+                                .param(
+                                        "address.street",
+                                        "Jalan Gowok"
+                                )
+                                .param(
+                                        "address.city",
+                                        "Shizuoka"
+                                )
+                                .param(
+                                        "address.country",
+                                        "Jepang"
+                                )
+                                .param(
+                                        "address.postalCode",
+                                        "596969"
+                                )
+                                .param(
+                                        "hobbies[0]",
+                                        "Gaming"
+                                )
+                                .param(
+                                        "hobbies[1]",
+                                        "Coding"
+                                )
+                                .param(
+                                        "socialMedias[0].name",
+                                        "Instagram"
+                                )
+                                .param(
+                                        "socialMedias[0].location",
+                                        "Instagram.com"
+                                )
+                                .param(
+                                        "socialMedias[1].name",
+                                        "Youtube"
+                                )
+                                .param(
+                                        "socialMedias[1].location",
+                                        "Youtube.com"
+                                )
+        ).andExpectAll(
+                status().isBadRequest(),
+                content().string(Matchers.containsString("You send invalid data"))
+
+        );
+    }
 
 }

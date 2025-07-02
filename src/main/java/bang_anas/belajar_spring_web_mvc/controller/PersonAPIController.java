@@ -1,6 +1,7 @@
 package bang_anas.belajar_spring_web_mvc.controller;
 
 import bang_anas.belajar_spring_web_mvc.model.CreatePersonRequest;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -19,7 +20,8 @@ public class PersonAPIController {
     )
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    public CreatePersonRequest createPerson(@RequestBody CreatePersonRequest request) {
+    // menggunakan @Valid untuk melakukan validation
+    public CreatePersonRequest createPerson(@RequestBody @Valid CreatePersonRequest request) {
         return request;
     }
 
