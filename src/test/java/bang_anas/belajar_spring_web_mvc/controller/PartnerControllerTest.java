@@ -1,6 +1,5 @@
 package bang_anas.belajar_spring_web_mvc.controller;
 
-import bang_anas.belajar_spring_web_mvc.model.User;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,41 +8,28 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 import static org.springframework.test.web.servlet.MockMvcBuilder.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
 
+
 @SpringBootTest
 @AutoConfigureMockMvc
-class UserControllerTest {
+class PartnerControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    void getUser() throws Exception {
-        mockMvc.perform(
-                get("/user/current")
-                        .sessionAttr(
-                                "user",
-                                new User("Anas")
-                        )
-        ).andExpectAll(
+    void getPartner() throws Exception {
+        mockMvc.perform(get("/partner/current").header(
+                "X-API-KEY",
+                "SG4JUM4SH00T"
+        )).andExpectAll(
                 status().isOk(),
-                content().string(Matchers.containsString("Hallo Tuan Anas"))
-
+                content().string(Matchers.containsString("SG4JUM4SH00T : Sample Partner"))
         );
     }
-
-    @Test
-    void getUserInvalid() throws Exception {
-        mockMvc.perform(
-                get("/user/current")
-        ).andExpectAll(
-                status().is3xxRedirection()
-
-        );
-    }
-
 }
