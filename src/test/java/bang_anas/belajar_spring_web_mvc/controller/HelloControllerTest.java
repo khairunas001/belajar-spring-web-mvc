@@ -52,4 +52,25 @@ class HelloControllerTest {
         );
     }
 
+    @Test
+    void helloView() throws Exception {
+        mockMvc.perform(get("/web/hello").queryParam(
+                "name",
+                "Anas"
+        )).andExpectAll(
+                status().isOk(),
+                content().string(Matchers.containsString("Sinau Mustache Spring")),
+                content().string(Matchers.containsString("Hello Anas"))
+        );
+    }
+
+    @Test
+    void helloViewRedirect() throws Exception {
+        mockMvc.perform(
+                get("/web/hello")
+        ).andExpectAll(
+                status().is3xxRedirection()
+        );
+    }
+
 }

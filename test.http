@@ -20,3 +20,13 @@ Accept: application/json
     {"name": "samsung cloud", "location": "samsung.com"}
   ]
 }
+
+###
+POST http://localhost:9000/todos?todo=JokoGenit
+Content-Type: application/json
+Accept: application/json
+
+###
+GET http://localhost:9000/todos
+Content-Type: application/json
+Accept: application/json
